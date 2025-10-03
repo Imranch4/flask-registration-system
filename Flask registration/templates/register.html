@@ -1,0 +1,81 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="wrapper";>
+    <div class="inner">
+        <form id="auth-form" action="/register" method="POST" enctype="multipart/form-data">
+            <h3>Registration Form</h3>
+            
+            {% if error %}
+            <div class="alert alert-danger">
+                {{ error }}
+            </div>
+            {% endif %}
+            
+            <div class="form-group">
+                <input type="text" name="nom" placeholder="First Name" class="form-control" required>
+                <input type="text" name="prenom" placeholder="Last Name" class="form-control" required>
+            </div>
+            <div class="form-wrapper">
+                <input type="text" name="username" placeholder="Username" class="form-control" required>
+                <i class="zmdi zmdi-account"></i>
+            </div>
+            <div class="form-wrapper">
+                <input type="text" name="email" placeholder="Email Address" class="form-control" required>
+                <i class="zmdi zmdi-email"></i>
+            </div>
+            <div class="form-wrapper">
+                <select name="genre" class="form-control" required>
+                    <option value="" disabled selected>Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="form-wrapper">
+                <input type="password" id="password" name="password" placeholder="Password" class="form-control" required>
+                <i class="zmdi zmdi-lock"></i>
+                <span class="toggle-password" onclick="togglePasswordVisibility('password')"></span>
+            </div>
+            <div class="form-wrapper">
+                <div id="password-strength" class="text-muted">Password strength: </div>
+            </div>
+            <div class="form-wrapper">
+                <label for="profile_image">Upload Profile Image:</label>
+                <input type="file" id="profile_image" name="profile_image" class="form-control" accept="image/*">
+            </div>
+            <p>Have an account?<a href="/login"> Sign in.</a></p>
+            <button type="submit" class="btn btn-dark">Register</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function togglePasswordVisibility(inputId) {
+        const passwordInput = document.getElementById(inputId);
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    }
+
+    const passwordInput = document.getElementById('password');
+    const strengthDisplay = document.getElementById('password-strength');
+
+    passwordInput.addEventListener('input', () => {
+        const value = passwordInput.value;
+        let strength = 'weak';
+
+        if (value.length >= 8 && /[A-Z]/.test(value) && /[0-9]/.test(value) && /[!@#$%^&*]/.test(value)) {
+            strength = 'strong';
+        } else if (value.length >= 6 && (/[A-Z]/.test(value) || /[0-9]/.test(value) || /[!@#$%^&*]/.test(value))) {
+            strength = 'medium';
+        }
+
+        strengthDisplay.textContent = `Password strength: ${strength.charAt(0).toUpperCase() + strength.slice(1)}`;
+        strengthDisplay.className = `text-muted ${strength}`;
+    });
+</script>
+
+{% endblock %}
