@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="wrapper">
+    <div class="inner">
+        <form id="auth-form" action="/login" method="POST">
+            <h3>Login</h3>
+            <!-- Display error message -->
+            {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            {% endif %}
+            <div class="form-wrapper">
+                <input type="text" name="username" placeholder="Username" class="form-control">
+                <i class="zmdi zmdi-account"></i>
+            </div>
+            <div class="form-wrapper">
+                <input type="text" name="password" placeholder="Password" class="form-control">
+                <i class="zmdi zmdi-lock"></i>
+            </div>
+            <p>Don't have an account? <a href="/register">Sign up here!</a></p>
+            <button type="submit" class="btn btn-dark">Login</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

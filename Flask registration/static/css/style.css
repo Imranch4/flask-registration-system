@@ -1,0 +1,138 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+}
+
+.inner {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+}
+
+#auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#auth-form h3 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 24px;
+}
+
+.form-group,
+.form-wrapper {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.alert.alert-danger {
+  color: red;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid red;
+  border-radius: 5px;
+  background-color: #ffe6e6;
+}
+
+.form-group input,
+.form-wrapper input,
+.form-wrapper select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-wrapper input:focus,
+.form-wrapper select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.form-group {
+  display: flex;
+  gap: 10px;
+}
+
+.form-group input {
+  flex: 1;
+}
+
+.form-wrapper i {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+}
+
+p {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+p a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+.btn-dark {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-dark:hover {
+  background-color: #555;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+  .wrapper {
+      padding: 10px;
+  }
+
+  .inner {
+      padding: 20px;
+  }
+
+  .form-group {
+      flex-direction: column;
+      gap: 15px;
+  }
+}
